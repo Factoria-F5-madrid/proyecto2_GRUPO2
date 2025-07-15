@@ -21,6 +21,9 @@ class Proveedor(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Proveedores"
+
 
 # tabla empleado --> quien hace  el movimiento del stock
 class Empleado(models.Model):
@@ -39,6 +42,9 @@ class Almacen(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Almacenes"
 
 
 # tabla producto
