@@ -2,5 +2,6 @@ from django.apps import AppConfig
 
 
 class FloristappConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'floristapp'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "floristapp"
+    verbose_name = "Spikeapp Florist: Gestion"
