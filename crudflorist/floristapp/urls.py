@@ -4,12 +4,12 @@ from . import views_admin
 from . import views_auth
 
 urlpatterns = [
-    # VISTA PRINCIPAL (BIENVENIDA)
-    path("", views_auth.home, name="home"),
+    # VISTA PRINCIPAL
+    path("", views_auth.home_view, name="home"),
     # AUTENTICACIÓN
     path("login/", views_auth.login_view, name="login"),
     path("logout/", views_auth.logout_view, name="logout"),
-    path("signup/", views_auth.signup_view, name="signup"),
+    path("register/", views_auth.register_view, name="register"),
     # VISTAS DE USO GENERAL (USUARIOS)
     path("productos/", views_app.producto_list, name="producto_list"),
     path("productos/nuevo/", views_app.producto_create, name="producto_create"),

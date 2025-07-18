@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.db.models import Sum
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import (
+    login_required,
+    user_passes_test,
+)
 from .models import Producto, MovimientoStock
 
 
@@ -28,3 +31,18 @@ def dashboard_admin(request):
     }
 
     return render(request, "admin/dashboard.html", context)
+
+
+# alertas
+def alertas_bajo_stock(request):
+    productos_bajo_stock = Producto.objects.filter(current_stock__lt=5)
+    return render(
+        request,
+        "admin/alertas_stock.html",
+        {"productos_bajo_stock": productos_bajo_stock},
+    )
+
+
+def reporte_stock(request):
+    productos = Producto.objects.all()
+    return render(request, "admin/reporte_stock.html", {"productos": productos})
