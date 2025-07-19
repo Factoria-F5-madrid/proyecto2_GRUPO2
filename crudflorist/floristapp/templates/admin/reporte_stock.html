@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">📋 Reporte de Stock</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Stock actual</th>
+            <th>Unidad</th>
+            <th>Precio compra</th>
+            <th>Precio venta</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.name }}</td>
+            <td>{{ producto.current_stock }}</td>
+            <td>{{ producto.unit }}</td>
+            <td>{{ producto.purchase_price }}</td>
+            <td>{{ producto.sales_price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

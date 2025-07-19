@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>🌼 Lista de Productos</h2>
+<a href="{% url 'producto_create' %}" class="btn btn-success mb-3">Agregar Producto</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Proveedor</th>
+            <th>Stock</th>
+            <th>Unidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.name }}</td>
+            <td>{{ producto.category.name }}</td>
+            <td>{{ producto.supplier.name }}</td>
+            <td>{{ producto.current_stock }}</td>
+            <td>{{ producto.unit }}</td>
+            <td>
+                <a href="{% url 'producto_detail' producto.pk %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'producto_update' producto.pk %}" class="btn btn-sm btn-warning">Editar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

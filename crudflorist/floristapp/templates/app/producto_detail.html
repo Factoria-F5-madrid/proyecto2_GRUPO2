@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Detalles del Producto</h2>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Nombre:</strong> {{ producto.name }}</li>
+    <li class="list-group-item"><strong>Descripción:</strong> {{ producto.description }}</li>
+    <li class="list-group-item"><strong>Precio compra:</strong> {{ producto.purchase_price }}</li>
+    <li class="list-group-item"><strong>Precio venta:</strong> {{ producto.sales_price }}</li>
+    <li class="list-group-item"><strong>Stock:</strong> {{ producto.current_stock }} {{ producto.unit }}</li>
+    <li class="list-group-item"><strong>Categoría:</strong> {{ producto.category.name }}</li>
+    <li class="list-group-item"><strong>Proveedor:</strong> {{ producto.supplier.name }}</li>
+</ul>
+<a href="{% url 'producto_list' %}" class="btn btn-secondary mt-3">Volver</a>
+{% endblock %}

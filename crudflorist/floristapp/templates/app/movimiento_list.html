@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>📦 Movimientos de Stock</h2>
+<a href="{% url 'movimiento_create' %}" class="btn btn-success mb-3">Registrar Movimiento</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Razón</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mov in movimientos %}
+        <tr>
+            <td>{{ mov.product.name }}</td>
+            <td>{{ mov.type_choice }}</td>
+            <td>{{ mov.amount }}</td>
+            <td>{{ mov.date }}</td>
+            <td>{{ mov.reason }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

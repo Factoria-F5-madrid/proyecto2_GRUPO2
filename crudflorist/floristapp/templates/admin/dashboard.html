@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>📊 Panel de Administración</h2>
+<ul class="list-group mb-4">
+    <li class="list-group-item">Total de productos: {{ total_productos }}</li>
+    <li class="list-group-item">Stock total: {{ total_stock }}</li>
+</ul>
+
+<h4>🌼 Productos con bajo stock</h4>
+<ul class="list-group">
+    {% for producto in productos_bajo_stock %}
+    <li class="list-group-item text-danger">{{ producto.name }} - {{ producto.current_stock }} {{ producto.unit }}</li>
+    {% empty %}
+    <li class="list-group-item text-success">Todo está en orden</li>
+    {% endfor %}
+</ul>
+
+<h4 class="mt-4">📦 Últimos movimientos</h4>
+<ul class="list-group">
+    {% for movimiento in ultimos_movimientos %}
+    <li class="list-group-item">{{ movimiento.type_choice }} de {{ movimiento.amount }} - {{ movimiento.product.name }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

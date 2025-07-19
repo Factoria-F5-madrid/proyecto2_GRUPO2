@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4 text-danger">🌺 Alertas de Stock Bajo</h2>
+{% if productos_bajo_stock %}
+<div class="alert alert-warning">
+    <strong>Atención:</strong> Hay productos con niveles de stock por debajo del mínimo.
+</div>
+<table class="table table-bordered table-striped">
+    <thead class="table-danger">
+        <tr>
+            <th>Producto</th>
+            <th>Stock actual</th>
+            <th>Unidad</th>
+            <th>Categoría</th>
+            <th>Proveedor</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos_bajo_stock %}
+        <tr>
+            <td>{{ producto.name }}</td>
+            <td>{{ producto.current_stock }}</td>
+            <td>{{ producto.unit }}</td>
+            <td>{{ producto.category.name }}</td>
+            <td>{{ producto.supplier.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-success">
+    🌸 Todos los productos están por encima del nivel de stock mínimo. ¡Buen trabajo!
+</div>
+{% endif %}
+{% endblock %}

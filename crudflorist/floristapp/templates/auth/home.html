@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mt-5">
+    <h1>🌺 Bienvenido a Spikeapp Floristería</h1>
+    <p class="lead">Gestión de stock y productos florales</p>
+    <a href="{% url 'login' %}" class="btn btn-success me-2">Iniciar sesión</a>
+    <a href="{% url 'register' %}" class="btn btn-outline-success">Registrarse</a>
+</div>
+{% endblock %}
