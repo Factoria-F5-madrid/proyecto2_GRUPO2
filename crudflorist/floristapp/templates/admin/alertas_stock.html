@@ -1,35 +1,60 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 class="mb-4 text-danger">🌺 Alertas de Stock Bajo</h2>
-{% if productos_bajo_stock %}
-<div class="alert alert-warning">
-    <strong>Atención:</strong> Hay productos con niveles de stock por debajo del mínimo.
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">🌺 Alertas de Stock Bajo</h2>
+        <a href="{% url 'dashboard_admin' %}" class="btn btn-light btn-sm">
+            <i class="bi bi-arrow-left"></i> Volver al Dashboard
+        </a>
+    </div>
+    <div class="card-body">
+        {% if productos_bajo_stock %}
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i> <strong>Atención:</strong> Hay productos con niveles de stock por debajo del mínimo.
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-danger">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Stock actual</th>
+                        <th>Unidad</th>
+                        <th>Categoría</th>
+                        <th>Proveedor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos_bajo_stock %}
+                    <tr>
+                        <td>{{ producto.name }}</td>
+                        <td class="text-danger fw-bold">{{ producto.current_stock }}</td>
+                        <td>{{ producto.unit }}</td>
+                        <td>{{ producto.category.name }}</td>
+                        <td>{{ producto.supplier.name }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'producto_detail' producto.pk %}" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                                <a href="{% url 'movimiento_create' %}" class="btn btn-sm btn-outline-success">
+                                    <i class="bi bi-plus-circle"></i> Añadir Stock
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-success">
+            <i class="bi bi-check-circle-fill"></i> 🌸 Todos los productos están por encima del nivel de stock mínimo. ¡Buen trabajo!
+        </div>
+        <div class="text-center mt-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/6009/6009864.png" alt="Stock OK" class="img-fluid" style="max-width: 200px;">
+        </div>
+        {% endif %}
+    </div>
 </div>
-<table class="table table-bordered table-striped">
-    <thead class="table-danger">
-        <tr>
-            <th>Producto</th>
-            <th>Stock actual</th>
-            <th>Unidad</th>
-            <th>Categoría</th>
-            <th>Proveedor</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for producto in productos_bajo_stock %}
-        <tr>
-            <td>{{ producto.name }}</td>
-            <td>{{ producto.current_stock }}</td>
-            <td>{{ producto.unit }}</td>
-            <td>{{ producto.category.name }}</td>
-            <td>{{ producto.supplier.name }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<div class="alert alert-success">
-    🌸 Todos los productos están por encima del nivel de stock mínimo. ¡Buen trabajo!
-</div>
-{% endif %}
 {% endblock %}

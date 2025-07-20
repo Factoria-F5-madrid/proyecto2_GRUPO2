@@ -47,10 +47,18 @@ def producto_update(request, pk):
     return render(request, "app/producto_form.html", {"form": form})
 
 
+@login_required
+def producto_delete(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    if request.method == "POST":
+        producto.delete()
+        messages.success(request, "Producto eliminado exitosamente.")
+        return redirect("producto_list")
+    return render(request, "app/producto_confirm_delete.html", {"producto": producto})
+
+
 # MOVIMIENTOS DE STOCK
 # Permitir solo acceso mediante login
-
-
 @login_required
 def movimiento_list(request):
     movimientos = MovimientoStock.objects.select_related(

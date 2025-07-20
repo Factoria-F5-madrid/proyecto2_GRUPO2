@@ -1,14 +1,51 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 {% block content %}
-<h2>Detalles del Producto</h2>
-<ul class="list-group">
-    <li class="list-group-item"><strong>Nombre:</strong> {{ producto.name }}</li>
-    <li class="list-group-item"><strong>Descripción:</strong> {{ producto.description }}</li>
-    <li class="list-group-item"><strong>Precio compra:</strong> {{ producto.purchase_price }}</li>
-    <li class="list-group-item"><strong>Precio venta:</strong> {{ producto.sales_price }}</li>
-    <li class="list-group-item"><strong>Stock:</strong> {{ producto.current_stock }} {{ producto.unit }}</li>
-    <li class="list-group-item"><strong>Categoría:</strong> {{ producto.category.name }}</li>
-    <li class="list-group-item"><strong>Proveedor:</strong> {{ producto.supplier.name }}</li>
-</ul>
-<a href="{% url 'producto_list' %}" class="btn btn-secondary mt-3">Volver</a>
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0">Detalles del Producto</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="border-bottom pb-2 mb-3">Información General</h4>
+                <p><strong>Nombre:</strong> {{ producto.name }}</p>
+                <p><strong>Descripción:</strong> {{ producto.description|default:"Sin descripción" }}</p>
+                <p><strong>Categoría:</strong> {{ producto.category.name }}</p>
+                <p><strong>Proveedor:</strong> {{ producto.supplier.name }}</p>
+                <p><strong>Tienda:</strong> {{ producto.store.name }}</p>
+            </div>
+            <div class="col-md-6">
+                <h4 class="border-bottom pb-2 mb-3">Información de Stock</h4>
+                <p><strong>Stock actual:</strong>
+                    <span class="badge {% if producto.current_stock <= 5 %}bg-danger{% else %}bg-success{% endif %} p-2">
+                        {{ producto.current_stock }} {{ producto.unit }}
+                    </span>
+                </p>
+                <p><strong>Precio de compra:</strong> ${{ producto.purchase_price }}</p>
+                <p><strong>Precio de venta:</strong> ${{ producto.sales_price }}</p>
+                <p><strong>Margen de ganancia:</strong>
+                    {% if producto.purchase_price and producto.sales_price %}
+                        {% with margin=producto.sales_price|floatformat:2|slugify|slice:":-1"|add:"0"|add:0 cost=producto.purchase_price|floatformat:2|slugify|slice:":-1"|add:"0"|add:0 %}
+                            {% if cost > 0 %}
+                                {{ margin|add:"0"|add:0|sub:cost|mul:100|div:cost|floatformat:1 }}%
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        {% endwith %}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="btn-group">
+            <a href="{% url 'producto_list' %}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Volver</a>
+            <a href="{% url 'producto_update' producto.pk %}" class="btn btn-success"><i class="bi bi-pencil"></i> Editar</a>
+            <a href="{% url 'producto_delete' producto.pk %}" class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,32 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>🌼 Lista de Productos</h2>
-<a href="{% url 'producto_create' %}" class="btn btn-success mb-3">Agregar Producto</a>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Proveedor</th>
-            <th>Stock</th>
-            <th>Unidad</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for producto in productos %}
-        <tr>
-            <td>{{ producto.name }}</td>
-            <td>{{ producto.category.name }}</td>
-            <td>{{ producto.supplier.name }}</td>
-            <td>{{ producto.current_stock }}</td>
-            <td>{{ producto.unit }}</td>
-            <td>
-                <a href="{% url 'producto_detail' producto.pk %}" class="btn btn-sm btn-info">Ver</a>
-                <a href="{% url 'producto_update' producto.pk %}" class="btn btn-sm btn-warning">Editar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">🌼 Catálogo de Productos</h2>
+        <a href="{% url 'producto_create' %}" class="btn btn-light"><i class="bi bi-plus-circle"></i> Nuevo Producto</a>
+    </div>
+    <div class="card-body">
+        {% if productos %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Proveedor</th>
+                        <th>Stock</th>
+                        <th>Unidad</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.name }}</td>
+                        <td>{{ producto.category.name }}</td>
+                        <td>{{ producto.supplier.name }}</td>
+                        <td class="{% if producto.current_stock <= 5 %}text-danger fw-bold{% endif %}">{{ producto.current_stock }}</td>
+                        <td>{{ producto.unit }}</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'producto_detail' producto.pk %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Ver</a>
+                                <a href="{% url 'producto_update' producto.pk %}" class="btn btn-sm btn-outline-success"><i class="bi bi-pencil"></i> Editar</a>
+                                <a href="{% url 'producto_delete' producto.pk %}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> No hay productos registrados. ¡Agrega uno nuevo!
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

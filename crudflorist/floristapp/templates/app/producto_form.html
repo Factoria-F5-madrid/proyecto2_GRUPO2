@@ -1,10 +1,100 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>{{ form.instance.pk|yesno:"Editar Producto,Agregar Producto" }}</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="{% url 'producto_list' %}" class="btn btn-secondary">Cancelar</a>
-</form>
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0">{{ form.instance.pk|yesno:"Editar Producto,Nuevo Producto" }}</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        {{ form.name }}
+                        <label for="{{ form.name.id_for_label }}">Nombre</label>
+                        {% if form.name.errors %}
+                            <div class="invalid-feedback d-block">{{ form.name.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        {{ form.category }}
+                        <label for="{{ form.category.id_for_label }}">Categoría</label>
+                        {% if form.category.errors %}
+                            <div class="invalid-feedback d-block">{{ form.category.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating mb-3">
+                        {{ form.description }}
+                        <label for="{{ form.description.id_for_label }}">Descripción</label>
+                        {% if form.description.errors %}
+                            <div class="invalid-feedback d-block">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        {{ form.purchase_price }}
+                        <label for="{{ form.purchase_price.id_for_label }}">Precio de compra</label>
+                        {% if form.purchase_price.errors %}
+                            <div class="invalid-feedback d-block">{{ form.purchase_price.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        {{ form.sales_price }}
+                        <label for="{{ form.sales_price.id_for_label }}">Precio de venta</label>
+                        {% if form.sales_price.errors %}
+                            <div class="invalid-feedback d-block">{{ form.sales_price.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        {{ form.current_stock }}
+                        <label for="{{ form.current_stock.id_for_label }}">Stock inicial</label>
+                        {% if form.current_stock.errors %}
+                            <div class="invalid-feedback d-block">{{ form.current_stock.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        {{ form.unit }}
+                        <label for="{{ form.unit.id_for_label }}">Unidad</label>
+                        {% if form.unit.errors %}
+                            <div class="invalid-feedback d-block">{{ form.unit.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        {{ form.supplier }}
+                        <label for="{{ form.supplier.id_for_label }}">Proveedor</label>
+                        {% if form.supplier.errors %}
+                            <div class="invalid-feedback d-block">{{ form.supplier.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        {{ form.store }}
+                        <label for="{{ form.store.id_for_label }}">Tienda</label>
+                        {% if form.store.errors %}
+                            <div class="invalid-feedback d-block">{{ form.store.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Guardar</button>
+                <a href="{% url 'producto_list' %}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

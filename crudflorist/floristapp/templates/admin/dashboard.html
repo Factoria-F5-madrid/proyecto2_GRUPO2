@@ -1,25 +1,82 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>📊 Panel de Administración</h2>
-<ul class="list-group mb-4">
-    <li class="list-group-item">Total de productos: {{ total_productos }}</li>
-    <li class="list-group-item">Stock total: {{ total_stock }}</li>
-</ul>
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">📊 Panel de Administración</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3 border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Estadísticas Generales</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total de productos
+                                <span class="badge bg-primary rounded-pill">{{ total_productos }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Stock total
+                                <span class="badge bg-primary rounded-pill">{{ total_stock }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-3 border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">🌼 Productos con bajo stock</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            {% for producto in productos_bajo_stock %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-danger">
+                                {{ producto.name }}
+                                <span class="badge bg-danger rounded-pill">{{ producto.current_stock }} {{ producto.unit }}</span>
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item text-success">
+                                <i class="bi bi-check-circle-fill"></i> Todo está en orden
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<h4>🌼 Productos con bajo stock</h4>
-<ul class="list-group">
-    {% for producto in productos_bajo_stock %}
-    <li class="list-group-item text-danger">{{ producto.name }} - {{ producto.current_stock }} {{ producto.unit }}</li>
-    {% empty %}
-    <li class="list-group-item text-success">Todo está en orden</li>
-    {% endfor %}
-</ul>
-
-<h4 class="mt-4">📦 Últimos movimientos</h4>
-<ul class="list-group">
-    {% for movimiento in ultimos_movimientos %}
-    <li class="list-group-item">{{ movimiento.type_choice }} de {{ movimiento.amount }} - {{ movimiento.product.name }}
-    </li>
-    {% endfor %}
-</ul>
+        <div class="card border-success">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">📦 Últimos movimientos</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for movimiento in ultimos_movimientos %}
+                            <tr>
+                                <td>
+                                    <span class="badge {% if movimiento.type_choice == 'entrada' %}bg-success{% else %}bg-warning text-dark{% endif %}">
+                                        {{ movimiento.type_choice }}
+                                    </span>
+                                </td>
+                                <td>{{ movimiento.product.name }}</td>
+                                <td>{{ movimiento.amount }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm border-danger">
+    <div class="card-header bg-danger text-white">
+        <h2 class="mb-0">Confirmar Eliminación</h2>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i> ¿Estás seguro de que deseas eliminar el producto <strong>{{ producto.name }}</strong>?
+        </div>
+        <p>Esta acción no se puede deshacer y eliminará todos los datos asociados a este producto.</p>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Información del producto</h5>
+                <p><strong>Nombre:</strong> {{ producto.name }}</p>
+                <p><strong>Categoría:</strong> {{ producto.category.name }}</p>
+                <p><strong>Stock actual:</strong> {{ producto.current_stock }} {{ producto.unit }}</p>
+            </div>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Sí, eliminar</button>
+                <a href="{% url 'producto_list' %}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -34,6 +34,8 @@ def dashboard_admin(request):
 
 
 # alertas
+@user_passes_test(is_admin)
+@login_required
 def alertas_bajo_stock(request):
     productos_bajo_stock = Producto.objects.filter(current_stock__lt=5)
     return render(
@@ -43,6 +45,8 @@ def alertas_bajo_stock(request):
     )
 
 
+@user_passes_test(is_admin)
+@login_required
 def reporte_stock(request):
     productos = Producto.objects.all()
     return render(request, "admin/reporte_stock.html", {"productos": productos})

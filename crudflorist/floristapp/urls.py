@@ -3,6 +3,7 @@ from . import views_app
 from . import views_admin
 from . import views_auth
 
+
 urlpatterns = [
     # VISTA PRINCIPAL
     path("", views_auth.home_view, name="home"),
@@ -17,6 +18,7 @@ urlpatterns = [
     path(
         "productos/<int:pk>/editar/", views_app.producto_update, name="producto_update"
     ),
+    path("productos/<int:pk>/eliminar/", views_app.producto_delete, name="producto_delete"),
     path("movimientos/", views_app.movimiento_list, name="movimiento_list"),
     path("movimientos/nuevo/", views_app.movimiento_create, name="movimiento_create"),
     # VISTAS ADMINISTRATIVAS

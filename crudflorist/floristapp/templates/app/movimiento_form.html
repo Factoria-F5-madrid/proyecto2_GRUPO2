@@ -1,10 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Registrar Movimiento</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="{% url 'movimiento_list' %}" class="btn btn-secondary">Cancelar</a>
-</form>
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0">Registrar Movimiento de Stock</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        {{ form.product }}
+                        <label for="{{ form.product.id_for_label }}">Producto</label>
+                        {% if form.product.errors %}
+                            <div class="invalid-feedback d-block">{{ form.product.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        {{ form.type_choice }}
+                        <label for="{{ form.type_choice.id_for_label }}">Tipo de Movimiento</label>
+                        {% if form.type_choice.errors %}
+                            <div class="invalid-feedback d-block">{{ form.type_choice.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        {{ form.amount }}
+                        <label for="{{ form.amount.id_for_label }}">Cantidad</label>
+                        {% if form.amount.errors %}
+                            <div class="invalid-feedback d-block">{{ form.amount.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        {{ form.reason }}
+                        <label for="{{ form.reason.id_for_label }}">Razón</label>
+                        {% if form.reason.errors %}
+                            <div class="invalid-feedback d-block">{{ form.reason.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating mb-3">
+                        {{ form.employee }}
+                        <label for="{{ form.employee.id_for_label }}">Empleado</label>
+                        {% if form.employee.errors %}
+                            <div class="invalid-feedback d-block">{{ form.employee.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating mb-3">
+                        {{ form.observaciones }}
+                        <label for="{{ form.observaciones.id_for_label }}">Observaciones</label>
+                        {% if form.observaciones.errors %}
+                            <div class="invalid-feedback d-block">{{ form.observaciones.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Guardar</button>
+                <a href="{% url 'movimiento_list' %}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

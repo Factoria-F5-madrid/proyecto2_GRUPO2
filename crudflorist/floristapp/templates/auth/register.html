@@ -1,13 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <h2>Registro</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Crear cuenta</button>
-        </form>
+<div class="row justify-content-center py-5">
+    <div class="col-lg-7">
+        <div class="card shadow-lg border-0 rounded-lg">
+            <div class="card-header bg-success text-white">
+                <h3 class="text-center font-weight-light my-2">Crear Cuenta</h3>
+            </div>
+            <div class="card-body p-4">
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Error:</strong> Por favor, corrige los errores indicados a continuación.
+                </div>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="id_username" name="username" type="text" placeholder="nombre de usuario" required />
+                                <label for="id_username">Nombre de usuario</label>
+                                {% if form.username.errors %}
+                                <div class="text-danger small mt-1">{{ form.username.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="id_password1" name="password1" type="password" placeholder="contraseña" required />
+                                <label for="id_password1">Contraseña</label>
+                                {% if form.password1.errors %}
+                                <div class="text-danger small mt-1">{{ form.password1.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="id_password2" name="password2" type="password" placeholder="confirmar contraseña" required />
+                                <label for="id_password2">Confirmar Contraseña</label>
+                                {% if form.password2.errors %}
+                                <div class="text-danger small mt-1">{{ form.password2.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small text-muted mb-3">
+                        <ul>
+                            <li>Tu contraseña no puede ser demasiado similar a tu información personal.</li>
+                            <li>Tu contraseña debe contener al menos 8 caracteres.</li>
+                            <li>Tu contraseña no puede ser una contraseña común.</li>
+                            <li>Tu contraseña no puede ser completamente numérica.</li>
+                        </ul>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">Crear cuenta</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center py-3">
+                <div class="small"><a href="{% url 'login' %}" class="text-success">¿Ya tienes una cuenta? Inicia sesión</a></div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
