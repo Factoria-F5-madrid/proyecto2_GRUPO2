@@ -17,8 +17,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
 
-            # Redirige según tipo de usuario
-            if user.is_superuser or user.is_staff:
+            if user.is_superuser:
                 return redirect("dashboard_admin")
             else:
                 return redirect("producto_list")
