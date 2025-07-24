@@ -83,7 +83,7 @@ class Producto(models.Model):
     current_stock = models.PositiveIntegerField("Stock actual", default=0)
     unit = models.CharField("Unidad", max_length=50, default="unidad")
     category = models.ForeignKey(
-        CategoriaProducto, on_delete=models.CASCADE, verbose_name="Categoría"
+        CategoriaProducto, on_delete=models.DO_NOTHING, verbose_name="Categoría"
     )
     supplier = models.ForeignKey(
         Proveedor,
@@ -119,7 +119,7 @@ class MovimientoStock(models.Model):
     ]
 
     product = models.ForeignKey(
-        Producto, on_delete=models.CASCADE, verbose_name="Producto"
+        Producto, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Producto"
     )
     type_choice = models.CharField(
         "Tipo de movimiento", max_length=10, choices=TIPO_CHOICES
