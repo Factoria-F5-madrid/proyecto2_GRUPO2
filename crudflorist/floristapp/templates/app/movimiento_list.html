@@ -3,6 +3,7 @@
 <div class="card shadow-sm">
     <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
         <h2 class="mb-0">📦 Movimientos de Stock</h2>
+        <a href="{% url 'producto_list' %}" class="btn btn-light"><i class="bi bi-arrow-return-left"></i> Registro de productos</a>
         <a href="{% url 'movimiento_create' %}" class="btn btn-light"><i class="bi bi-plus-circle"></i> Registrar Movimiento</a>
     </div>
     <div class="card-body">
@@ -33,7 +34,7 @@
                         </td>
                         <td>{{ mov.amount }} {{ mov.product.unit }}</td>
                         <td>{{ mov.reason }}</td>
-                        <td>{{ mov.employee.username }}</td>
+                        <td>{{ mov.employee.name }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
