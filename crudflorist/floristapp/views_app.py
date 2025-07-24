@@ -36,7 +36,7 @@ def producto_create(request):
 @login_required
 def producto_update(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
-    if request.method == "POST":
+    if request.method == "POST": #Debería ser PUT pero no se puede con Django vanilla
         form = ProductoForm(request.POST, instance=producto)
         if form.is_valid():
             form.save()
@@ -50,7 +50,7 @@ def producto_update(request, pk):
 @login_required
 def producto_delete(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
-    if request.method == "POST":
+    if request.method == "POST": #Debería ser DELETE pero no se puede con Django vanilla
         producto.delete()
         messages.success(request, "Producto eliminado exitosamente.")
         return redirect("producto_list")
