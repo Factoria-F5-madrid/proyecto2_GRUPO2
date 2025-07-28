@@ -1,4 +1,4 @@
-<img width="1331" height="659" alt="image" src="https://github.com/user-attachments/assets/3585d247-38dd-4b82-a449-10f8ca7d4b54" /><p align="center">
+<p align="center">
   <img src="crudflorist/assets/logo.png"
  alt="1200" width="1800" />
 </p>
