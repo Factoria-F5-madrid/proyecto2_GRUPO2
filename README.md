@@ -218,9 +218,11 @@ La gestión que permite la APP son las siguientes:
 
 - Acceder a la app como usuario normal (Permisos muy básicos, ideal para rol para empleado/a de la tienda)
 - Acceder a la app siendo staff (Mismos o menos permisos que el superuser, ideal rol para un encargado/a de tienda)
-  
-  
 
+Por último cualquier dirección que no este registrada en nuestra aplicación, devolverá una página propia de error permitiendo volver al inicio de la aplicación.
+
+ ![Página de error 404](./crudflorist/assets/404page.png)
+ 
 ---
 
 ## 📬 Contacto
