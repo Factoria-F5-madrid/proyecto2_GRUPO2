@@ -19,6 +19,10 @@ A continuación se muestra una representación visual de la arquitectura de Spik
 
 Este esquema muestra la estructura de aplicaciones dentro del proyecto Django, sus componentes principales (Modelos, Vistas, Formularios, URLs, Plantillas, etc.) y cómo interactúan con el sistema de gestión, los usuarios, los assets estáticos y la base de datos.
 
+## Esquema entidad relacion
+
+![Esquema entidad relacion](./crudflorist/assets/ER_spike_grupo2.jpg)
+
 ---
 
 ## 🚩 Desafíos Comunes en Floristerías Tradicionales
