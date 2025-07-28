@@ -145,7 +145,7 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-### 4.Aplicar migraciones
+### 4. Aplicar migraciones
 ```
 python manage.py migrate
 ```
@@ -188,19 +188,38 @@ Para el siguiente paso es importante tener al menos un superuser, que será el r
 - Añadir los datos de los proveedores existentes de la empresa
 - Añadir las categorias de los productos existentes de la empresa
 
-De esta forma, el cliente - empleado, solo tendra manejo exclusivo de la gestión del inventario.
+De esta forma, el usuario/empleado, solo tendra manejo exclusivo de la gestión del inventario.
 
 Todo aquello se deberá hacer desde el panel de administrado de Django.
 
 
 ![Panel de administración](./crudflorist/assets/panel-admin.png)
 
-Cuando se acceda, los datos partirán de 0, es el empleado quien debe ir añadiendo productos completando los campos con los datos previamente proporcianados así como el stock, precio, etc que corresponda.
+
+Cuando el usuario/empleado acceda, los datos partirán de 0, será el responsable de ir añadiendo productos completando los campos con los datos previamente proporcianados así como el stock, precio, etc que corresponda.
+
+
 ![Panel de productos](./crudflorist/assets/new-product.png)
 
 Aquí el usuario podrá visualizar el producto añadido así de la misma forma registrar un nuevo movimiento usando el botón de *Registro* o seguir añadiendo productos nuevos
 
 ![Panel de productos](./crudflorist/assets/interface-with-product.png)
+
+
+La gestión que permite la APP son las siguientes:
+
+- Acceder a ella con la cuenta de superuser (Todos los permisos, ideal rol jefe/jefa)
+  - El superuser solo podrá ver desde la app un dashboard con la información de la tienda:
+    
+    ![Panel de productos vista superuser](./crudflorist/assets/view-app-superuser.png)
+
+
+  - Para realizar operaciones de gestión, el superuser deberá usar la otra interfaz.
+
+- Acceder a la app como usuario normal (Permisos muy básicos, ideal para rol para empleado/a de la tienda)
+- Acceder a la app siendo staff (Mismos o menos permisos que el superuser, ideal rol para un encargado/a de tienda)
+  
+  
 
 ---
 
