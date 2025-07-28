@@ -1,110 +1,130 @@
-## 1. Instalación de Django.
-Lo primero será crear una carpeta en nuestro sistema de ficheros para realizar este tutorial. La llamaremos “floristeria”
+<p align="center">
+  <img src="crudflorist/assets/logo.png"
+ alt="1200" width="1800" />
+</p>
 
-```
-mkdir florist
-cd florist
-```
+---
 
+# 🌸 SpikeApp: Tu Floristería Florece con la Tecnología
 
-### Antes de la instalación, procedemos a crear un entorno virtual, para lo cual utilizamos el Python Package Installer (pip). Si pip no está instalado en tu equipo, instálalo desde tu terminal con:
+SpikeApp es una solución integral desarrollada en Django, pensada especialmente para floristerías que buscan optimizar su operativa diaria, reducir errores y maximizar sus beneficios. Gracias a su arquitectura modular, interfaz intuitiva y funcionamiento local, SpikeApp te permite llevar el control total de tu negocio incluso sin conexión a internet.
 
-```
-sudo apt install python3-pip (para Sistemas Operativos basados en Linux debian)
-```
+---
 
-```
-python -m pip install -U pip (para Windows siempre ejecutaremos "python" en vez de "python3")
-```
+## 🧠 Arquitectura del Proyecto
 
-### Con pip instalado ya podemos crear el entorno virtual (para luego en él instalar el paquete de python llamado Django)
+A continuación se muestra una representación visual de la arquitectura de SpikeApp, basada en Django:
 
-```
-python3 -m venv .venv
-```
+![Arquitectura del Proyecto SpikeApp](./crudflorist/assets/map.png)
 
-Ahora debemos activar el entorno virtual recién creado:
+Este esquema muestra la estructura de aplicaciones dentro del proyecto Django, sus componentes principales (Modelos, Vistas, Formularios, URLs, Plantillas, etc.) y cómo interactúan con el sistema de gestión, los usuarios, los assets estáticos y la base de datos.
 
-```
-source .venv/bin/activate (para Sistemas Operativos basados en Linux debian)
-```
+---
 
-```
-.\.venv\Scripts\activate.ps1 (Windows)
-```
+## 🚩 Desafíos Comunes en Floristerías Tradicionales
 
-### Ahora ya podemos instalar el paquete de python Django en este entorno virtual:
+Las floristerías enfrentan múltiples retos al gestionar procesos de forma manual o con herramientas poco integradas:
 
-```
-pip install django
-```
+- **❌ Control de stock deficiente:** provoca pérdidas por exceso o escasez.
+- **❌ Gestión fragmentada:** registros en papel y sistemas aislados.
+- **❌ Ineficiencia operativa:** procesos lentos y propensos a errores.
+- **❌ Desperdicio de productos:** sin control de inventario ni predicción de demanda.
 
-- Tenemos que tener la versión Django 5.2.4
+---
 
-## 2. Configuración inicial de Django
+## ✅ SpikeApp: La Solución Todo-en-Uno
 
-```
-django-admin startproject crudflorist
-```
+SpikeApp centraliza y simplifica la gestión de tu floristería con módulos diseñados para cada área clave del negocio. Es una **aplicación web local, escalable** y de fácil uso.
 
-### Vamos a comprobar que nuestro proyecto creado con Django funciona correctamente, para ello ejecutamos
+### 🔧 Características Técnicas
 
-```
-cd crudflorist
-```
-### Ejecutar el servidor de Django en segundo plano
+- **Framework principal:** Django (Python)
+- **Base de datos:** SQLite / PostgreSQL (según configuración)
+- **Acceso local:** no requiere conexión a internet para operar
+- **Modular y escalable:** preparada para futuras mejoras
 
+---
 
-```bash
-python3 manage.py runserver &
-```
+## 🧩 Módulos Principales
 
-Ver los procesos en segundo plano:
+| Módulo     | Descripción                                                                 |
+|------------|------------------------------------------------------------------------------|
+| **Productos**  | Gestión completa de flores, ramos y artículos relacionados                 |
+| **Almacenes**  | Control preciso de la ubicación y cantidad de productos                    |
+| **Empleados**  | Administración de personal y roles                                          |
+| **Movimientos**| Registro en tiempo real de entradas y salidas de inventario                |
+| **Proveedores**| Base de datos organizada para relaciones comerciales                        |
+| **Reportes**   | Informes de ventas, stock y alertas clave                                   |
 
-```
-jobs
-```
+---
 
-Esto mostrará una lista como:
+## 🖥️ Interfaz Intuitiva
 
-```
-[1]+  Running		 python3 manage.py runserver &
+Diseñada pensando en la experiencia del usuario, SpikeApp ofrece:
 
-```
+- **📊 Dashboard:** resumen visual de ventas, pedidos e inventario
+- **📦 Formulario de productos:** fácil de usar para registrar nuevos artículos
+- **📈 Movimiento de stock:** control total de entradas y salidas
+- **🔐 Login/Registro:** acceso seguro y personalizado
 
-Pasar un proceso al primer plano (foreground):
+---
 
-```
-fg <número del job>
-```
+## 🔒 Seguridad y Trazabilidad
 
-Por ejemplo:
+- **Autenticación segura:** usuarios con login y contraseñas encriptadas
+- **Roles personalizables:** controla el acceso según el tipo de usuario
+- **Historial de movimientos:** trazabilidad completa por usuario y tiempo
 
-```
-fg %1
-```
+---
 
-Pasar un proceso de foreground a background:
+## 🌟 Beneficios para tu Negocio
 
-Si tienes un proceso corriendo en primer plano y quieres enviarlo al segundo plano:
+- ⏱️ **Ahorro de tiempo:** automatización de tareas repetitivas  
+- 🎯 **Menos errores:** procesos digitales reducen fallos humanos  
+- 🗃️ **Mayor orden:** inventario, pedidos y proveedores bien organizados  
+- 📊 **Mejores decisiones:** reportes y datos clave en tiempo real  
+- 🌿 **Menor desperdicio:** optimización del stock perecedero  
 
-Primero pausa el proceso con Ctrl + Z
-Esto lo suspende temporalmente.
-Luego reanúdalo en background con:
+---
 
-```
-bg
-```
+## 🔭 Roadmap Futuro
 
+SpikeApp está en constante mejora. Algunas de las funciones planificadas son:
 
-### Debemos crear la app dentro del proyecto
+- 📉 **Estadísticas Avanzadas:** análisis predictivo y gráficos dinámicos  
+- 🔔 **Notificaciones Automáticas:** alertas de stock bajo o tareas pendientes  
+- 💳 **Facturación Integrada:** sistema de pagos y emisión de comprobantes  
+- 👥 **Roles Personalizados:** permisos granulares por tarea o área  
+- 📱 **App Móvil:** gestiona tu floristería desde cualquier lugar  
 
-```
-python3 manage.py startapp floristapp
-```
+---
 
-### Comando inicial para administración interna de Django
+## 📂 Instalación y Uso (próximamente)
 
-```
-python3 manage.py migrate
-```
+> La documentación técnica para instalación local estará disponible en futuras actualizaciones. Por ahora, el proyecto se encuentra en desarrollo activo.
+
+---
+
+## 💡 Contribuciones
+
+¿Te gustaría contribuir al desarrollo de SpikeApp? ¡Estás invitado!
+
+---
+
+## 📬 Contacto
+
+¿Tienes preguntas, sugerencias o deseas colaborar? No dudes en ponerte en contacto:
+
+- **Email:** spikeappteam@spikeapp.com 
+- **GitHub:** [Repositorio SpikeApp](#)
+
+---
+
+## 🌸 SpikeApp: Tu Floristería en su Máximo Esplendor
+
+En SpikeApp creemos que una floristería organizada florece más fuerte. Esta plataforma ha sido creada para ayudarte a transformar tu negocio con tecnología accesible, segura y potente.
+
+---
+
+> *"La tecnología no reemplaza tu arte floral, lo potencia."*
+
