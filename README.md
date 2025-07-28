@@ -172,9 +172,13 @@ Accede en el navegador a:
 Una vez este el programá en ejecución, veremos lo siguiente: 
 
 ![Index de la aplicacion](./crudflorist/assets/index.png)
+
 Desde esta interfaz se podrá iniciar sesión como registrarse en caso de no tener cuenta.
+
 Al ser la primera vez, se deberá registrar una cuenta para poder usar la APP.
 Después del registro se llevará al inicio de sesión.
+
+
 ![Registro de la aplicacion](./crudflorist/assets/register.png)
 
 ![Inicio de la aplicacion](./crudflorist/assets/login.png)
@@ -185,7 +189,9 @@ Para el siguiente paso es importante tener al menos un superuser, que será el r
 - Añadir las categorias de los productos existentes de la empresa
 
 De esta forma, el cliente - empleado, solo tendra manejo exclusivo de la gestión del inventario.
+
 Todo aquello se deberá hacer desde el panel de administrado de Django.
+
 
 ![Panel de administración](./crudflorist/assets/panel-admin.png)
 
