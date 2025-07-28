@@ -111,6 +111,7 @@ SpikeApp está en constante mejora. Algunas de las funciones planificadas son:
 - Git
 - pip
 - (Opcional pero recomendado) Virtualenv
+- (Opcional) Docker
 
 ### 1. Clonar el repositorio
 
@@ -118,6 +119,18 @@ SpikeApp está en constante mejora. Algunas de las funciones planificadas son:
 git clone https://github.com/Factoria-F5-madrid/proyecto2_GRUPO2
 cd tu-repositorio
 ```
+### 1.1 OPCIONAL Entorno con docker
+Situarse en la carpeta raiz del proyecto y configurar la imagen
+```
+docker compose build
+```
+Lanzar el contenedor, por defecto abre el puerto 8000
+```
+docker-compose run --service-ports --rm server bash
+cd /crudflorist
+```
+#### Saltar al paso 4 si se implementa con docker
+
 ### 2. Crear y activar entorno virtual
 
 ```
@@ -143,6 +156,10 @@ python manage.py createsuperuser
 ### 6. Ejecutar el servidor de desarrollo
 ```
 python manage.py runserver
+```
+NOTA. Si se usa entorno de docker (puerto por defecto)
+```
+python manage.py runserver 0.0.0.0:8000
 ```
 Accede en el navegador a:
 
