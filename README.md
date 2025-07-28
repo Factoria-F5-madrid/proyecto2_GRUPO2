@@ -114,15 +114,45 @@ SpikeApp está en constante mejora. Algunas de las funciones planificadas son:
 
 ### 1. Clonar el repositorio
 
-```bash
+```
 git clone https://github.com/Factoria-F5-madrid/proyecto2_GRUPO2
 cd tu-repositorio
 ```
----
+### 2. Crear y activar entorno virtual
 
-## 💡 Contribuciones
+```
+python -m venv venv
+# En Windows
+venv\Scripts\activate
+# En macOS/Linux
+source venv/bin/activate
+```
+### 3. Instalar dependencias
 
-¿Te gustaría contribuir al desarrollo de SpikeApp? ¡Estás invitado!
+```
+pip install -r requirements.txt
+```
+### 4.Aplicar migraciones
+```
+python manage.py migrate
+```
+### 5. Crear superusuario (opcional, para acceder al panel de administración)
+```
+python manage.py createsuperuser
+```
+### 6. Ejecutar el servidor de desarrollo
+```
+python manage.py runserver
+```
+Accede en el navegador a:
+
+- http://127.0.0.1:8000/ → Página principal
+- http://127.0.0.1:8000/admin-django/ → Panel de administración de Django
+
+
+> Uso de la aplicación:
+
+
 
 ---
 
