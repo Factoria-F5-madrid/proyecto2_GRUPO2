@@ -7,3 +7,4 @@ urlpatterns = [
     path("admin-django/", admin.site.urls),
     path("", include("floristapp.urls")),  # Enrutamiento a la app
 ]
+handler404 = "floristapp.views.mi_error_404"
