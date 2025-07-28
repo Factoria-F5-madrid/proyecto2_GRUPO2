@@ -1,4 +1,4 @@
-<p align="center">
+<img width="1331" height="659" alt="image" src="https://github.com/user-attachments/assets/3585d247-38dd-4b82-a449-10f8ca7d4b54" /><p align="center">
   <img src="crudflorist/assets/logo.png"
  alt="1200" width="1800" />
 </p>
@@ -169,7 +169,32 @@ Accede en el navegador a:
 
 > Uso de la aplicación:
 
+Una vez este el programá en ejecución, veremos lo siguiente: 
 
+![Index de la aplicacion](./crudflorist/assets/index.png)
+Desde esta interfaz se podrá iniciar sesión como registrarse en caso de no tener cuenta.
+Al ser la primera vez, se deberá registrar una cuenta para poder usar la APP.
+Después del registro se llevará al inicio de sesión.
+![Registro de la aplicacion](./crudflorist/assets/register.png)
+
+![Inicio de la aplicacion](./crudflorist/assets/login.png)
+
+Para el siguiente paso es importante tener al menos un superuser, que será el responsable de:
+- Añadir los datos de los almacenes existentes de la empresa
+- Añadir los datos de los proveedores existentes de la empresa
+- Añadir las categorias de los productos existentes de la empresa
+
+De esta forma, el cliente - empleado, solo tendra manejo exclusivo de la gestión del inventario.
+Todo aquello se deberá hacer desde el panel de administrado de Django.
+
+![Panel de administración](./crudflorist/assets/panel-admin.png)
+
+Cuando se acceda, los datos partirán de 0, es el empleado quien debe ir añadiendo productos completando los campos con los datos previamente proporcianados así como el stock, precio, etc que corresponda.
+![Panel de productos](./crudflorist/assets/new-product.png)
+
+Aquí el usuario podrá visualizar el producto añadido así de la misma forma registrar un nuevo movimiento usando el botón de *Registro* o seguir añadiendo productos nuevos
+
+![Panel de productos](./crudflorist/assets/interface-with-product.png)
 
 ---
 
