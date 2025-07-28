@@ -99,10 +99,21 @@ SpikeApp está en constante mejora. Algunas de las funciones planificadas son:
 
 ---
 
-## 📂 Instalación y Uso (próximamente)
+## 📂 Instalación y Uso
 
-> La documentación técnica para instalación local estará disponible en futuras actualizaciones. Por ahora, el proyecto se encuentra en desarrollo activo.
+> Sigue estos pasos para instalar y ejecutar el proyecto en tu entorno local:
 
+- Python 3.10 o superior
+- Git
+- pip
+- (Opcional pero recomendado) Virtualenv
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Factoria-F5-madrid/proyecto2_GRUPO2
+cd tu-repositorio
+```
 ---
 
 ## 💡 Contribuciones
